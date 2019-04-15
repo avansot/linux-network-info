@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Utilidades de Red
+Comment=Herramientas de Red
+Exec=gnome-terminal -- bash -c "$HOME/Scripts/netinfo.sh"
+Icon=application-x-firmware
+Terminal=true
+Type=Application
+Path=
+StartupNotify=false
+Name[es_PE]=Network.Info

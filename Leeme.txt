@@ -1,0 +1,218 @@
+*******************************
+**** LINUX NETWOK INFO v1.2****
+*******************************
+AUTOR : Carlos García
+EMAIL : avansot@gmail.com
+WEB   : https://youtube.com/user/avansot
+GITHUB: https://github.com/avansot
+
+INTRODUCCIÓN:
+
+   Situaciones como tu mouse se mueve solo, tus programas se activan solos, tu computador
+   se apaga solo, en tu navegador se abren tus favoritos sin haberles hecho click, así como
+   la aparición de unidades removibles en tu sistema GNU/Linux que desconoces, suelen ser 
+   indicativos de que tu computador esta siendo espiado y blanco del robo de archivos e
+   información privada.
+
+   Por ello siempre es buena idea conocer que sucede con el tráfico que ingresa y sale
+   de nuestro computador.
+
+   "Linux Network Info", te facilitará inspeccionar, configurar y monitorear tu computador 
+    local y red local para tener mayor conocimiento de que sucede allí, a través de unos
+    scripts amigables preparados especialmente para hacer de estas tareas de inspección y
+    administración algo mucho más fácil y sencillo de realizar.
+
+   ADICIONALMENTE:
+
+     Para mayor seguridad y privacidad de tu sistema GNU/Linux se instalará gufw, el cual
+     te ofrece una interfaz gráfica para activar el bloqueo de conexiones entrantes, iniciadas
+     desde el exterior. En caso de ya tenerlo instalado lo puedes buscar como firewall o
+     cortafuegos en el menú de programas de tu distribucion.
+
+       sudo apt install gufw
+
+     También se recomienda "Desinstalar Samba y RDPs" y "Bloquear Puertos", los cuales mejoran
+     la protección de tu sistema GNU/Linux de ser espiado y controlado por otro computador externo
+     y del robo de información remotamente.
+
+
+DETALLES TÉCNICOS: 
+
+    Este proyecto esta preparado principalmente para trabajar sobre sistema GNU/Linux derivados
+    de Debian como Ubuntu, Xubuntu, entre otros, los cuales utilizan paquetes de software .DEB.
+    Todo este proyecto ha sido eleborado y probado integramente sobre sistemas Xubuntu (64bits).
+
+    Sin embargo, puedes adaptarlo a cualquier otra distribución, pero en ese caso deberás 
+    modificar, los archivos .sh según sea necesario.
+
+    Por ejemplo ArchLinux y sus derivados como Manjaro, utilizan gestores de paquetes como
+    Pacman y no apt o apt-get.
+
+
+CONTENIDO: 
+	Leeme.txt        (Es este mismo archivo)  
+	first_install.sh (Ejecutalo una vez para instalar los programas adicionales que se utilizaran)
+	preview1.png     (Imagen png de muestra)
+	preview2.png     (Imagen png de muestra)
+	preview3.png     (Imagen png de muestra) 
+	preview4.png     (Imagen png de muestra)
+	preview4.png     (Imagen png de muestra)
+	scripts/         (Contiene los scripts principales de este proyecto, copia este folder en tu cuenta de usuario)
+	shortcut/        (Contiene el acceso directo que puedes copiar en tu escritorio)
+
+
+INSTALACIÓN:
+
+ 01. Ejecuta "una vez" el script "first_install.sh" para instalar en tu computador 
+     todos los programas necesarios utilizados por los scripts princiaples.
+ 
+     MODO DE USO: abre la consola aquí y escribe: 
+       - chmod first_install.sh
+       - sudo ./first_install.sh
+
+ 02. luego copia la carpeta "Scripts" en tu carpeta de usuario.
+
+ 03. Ingresa a la carpeta "Shortcut" y copia el accesdo directo "network.Info"
+     a tu Escritorio GNU/Linux
+
+ 04. Listo, ya puedes monitorear y controlar la red de tu computador haciendo click
+     en el icono "network.Info" de tu Escritorio GNU/Linux.
+
+ OTROS:
+     También puedes emplear los scripts.sh del folder "Scripts" invocandolos desde la consola,
+     siendo el principal "netinfo.sh", desde el cual se pueden ejecutar los scripts adicionales
+     "netstat.sh" y "security.sh"
+
+     MODO DE USO: 
+       ./netinfo.sh        (no es necesario utilizar sudo al principio)
+       chmod +x netinfo.sh (solo una vez para marcar el script como ejecutable)
+
+
+INICIO AUTOMÁTICO:
+
+  (*) Lo siguiente es un ejemplo de como hacerlo para sistemas GNU/Linux con escritorio XCFE:
+
+      a. Abrir el menú de programas.
+      b. Buscar "sesión e inicio".
+      c. Click en la ficha "aranque de aplicaciones".
+      d. Click en el botón Añadir.
+      e. Rellena los campos requeridos:
+
+          Nombre     : NetworkInfo                                               (o lo que tú prefieras).
+          Descripción: monitoreo y herramientas de red                           (o lo que tú prefieras).
+          Orden      : Click el botón derecho para buscar "Scripts/netinfo.sh"   (al encontrarlo aparecerá la ruta completa aquí)
+
+      f. Click en el botón Aceptar.
+
+  (*) Ahora para probar que este script se abre automáticamente reinicia el computador.
+
+
+CONTENIDO Y FUNCIONES:
+
+    ====================
+    [SCRIPT: netinfo.sh]
+    ====================
+       (*) Muestra información inicial de tu red interna como la Tabla ARP y consumo de tráfico,
+       incluyendo tu IP Privada y tu IP Públca, así como un menú con opciones diversas con las
+       cuales podemos monitorear el tráfico de red con la(s) herramienta(s) que mejor se adapten
+       a cada usuario o uso específico.
+
+       "ss -tup (*)"           : El asterisco indica que no se te solicitará tu clave de administrador.
+       "2) netstat y usuarios" : Ejecuta el script [netstat.sh].
+       "8) Mas Opciones...",   : Ejecuta el script [security.sh].
+
+       ::VISTA PREVIA::
+
+       *******************************
+       *** LINUX NETWORK INFO v1.2 ***
+       *******************************
+       Tabla de rutas IP del núcleo
+       Destino         Pasarela        Genmask         Indic Métric Ref    Uso Interfaz
+       0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 enp5s0
+       169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 enp5s0
+       192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 enp5s0
+
+                             rx      /      tx      /     total    /   estimated
+        enp5s0:
+              abr '19     16,49 GiB  /  528,83 MiB  /   17,00 GiB  /   36,35 GiB
+            yesterday    286,67 MiB  /    7,08 MiB  /  293,75 MiB
+                today      1,10 GiB  /   40,64 MiB  /    1,14 GiB  /    1,38 GiB
+
+        enp5s8: Not enough data available yet.
+       ----------------------------
+        (*) IPs: 192.168.1.6 :: 190.238.165.169
+        (*) Firewall en ejecución (más info en la opción 10)
+       ----------------------------
+       1) iptraf-ng		 5) netwatch		 9) wireshark
+       2) netstat y usuarios	 6) trafshow		10) Firewall Reglas
+       3) ss -tup (*)		 7) nethogs		11) Mas Opciones...
+       4) tcptrack		 8) nmap		12) Salir
+       Seleccione una opcion: 
+
+
+    ====================
+    [SCRIPT: netstat.sh]
+    ====================
+       (*) Ejecuta el comando netstat de forma más personalizada, incluyendo además información 
+           adicional como usuarios logueados y conexiones ssh.
+
+       ::VISTA PREVIA::
+
+       [sudo] contraseña para administrador: 
+       Conexiones activas de Internet (servidores y establecidos)
+       Proto  Recib Enviad Dirección local         Dirección remota       Estado       PID/Program name     Temporizador
+       tcp        0      0 127.0.0.53:53           0.0.0.0:*               ESCUCHAR    900/systemd-resolve  apagado (0.00/0/0)
+       tcp        0      0 127.0.0.1:631           0.0.0.0:*               ESCUCHAR    3571/cupsd           apagado (0.00/0/0)
+       tcp        0      0 192.168.1.6:36082       50.112.54.17:443        ESTABLECIDO 22074/firefox        mantener vivo (34,87/0/0)
+       tcp        0      0 192.168.1.6:36490       181.64.130.80:443       ESTABLECIDO 22074/firefox        mantener vivo (0,28/0/0)
+       tcp        0      0 192.168.1.6:52910       216.239.38.21:80        TIME_WAIT   -                    tiempo de espera (51,43/0/0)
+       tcp        0      0 192.168.1.6:44842       172.217.2.206:443       ESTABLECIDO 22074/firefox        apagado (0.00/0/0)
+       tcp6       0      0 ::1:631                 :::*                    ESCUCHAR    3571/cupsd           apagado (0.00/0/0)
+       udp        0      0 127.0.0.53:53           0.0.0.0:*                           900/systemd-resolve  apagado (0.00/0/0)
+       udp        0      0 0.0.0.0:68              0.0.0.0:*                           18592/dhclient       apagado (0.00/0/0)
+       udp        0      0 0.0.0.0:631             0.0.0.0:*                           3572/cups-browsed    apagado (0.00/0/0)
+       udp        0      0 0.0.0.0:5353            0.0.0.0:*                           910/avahi-daemon: r  apagado (0.00/0/0)
+       udp        0      0 0.0.0.0:38474           0.0.0.0:*                           910/avahi-daemon: r  apagado (0.00/0/0)
+       udp6       0      0 :::51799                :::*                                910/avahi-daemon: r  apagado (0.00/0/0)
+       udp6       0      0 :::5353                 :::*                                910/avahi-daemon: r  apagado (0.00/0/0)
+
+       ***USUARIOS ACTUALMENTE LOGUEADOS:
+       administrador
+
+       ***MAS DETALLES:
+        15:10:27 up  3:59,  1 user,  load average: 0,47, 0,65, 1,03
+       USUARIO  TTY      DE               LOGIN@   IDLE   JCPU   PCPU WHAT
+       administ tty7     :0               11:13    8:59m 17:37   0.03s /bin/sh /etc/xd
+
+       ***SSH:
+       Usuario Local: administrador is 1869 (systemd)
+
+    =====================
+    [SCRIPT: security.sh]
+    =====================
+       (*) Ofrece un menú adicional con opciones para controlar el sistema a través de IpTables.
+       (*) Posibilita además desinstalar samba y los programas de control remoto más comunes u usados,
+           los cuales pueden representar muchas veces un problema de seguridad y privacidad.
+       (*) De ser necesario se posibilitar reinstalar samba, sin embargo se sugiere desinstalarlo si
+           no necesitas compartir archivos vía red local con otros usuarios.
+
+       ::VISTA PREVIA::
+
+       *************************
+       *** IPtables Firewall ***
+       *************************
+      
+       1) Bloquear Solo Trafico Entrante {E}  5) Desinstalar Samba y RDPs
+       2) Bloquear Todo el Trafico {E/S}      6) RE/Instalar Samba
+       3) Bloquear Puertos		       7) Salir
+       4) Abrir Puertos
+       Seleccione una opcion: 
+
+
+CARPETA SCRIPTS:
+
+  En este folder puedes incluir si prefieres otros scripts propios o de terceros en tu computador,
+  al tenerlos todos en un mismo lugar dentro de tu folder de usuario te será mucho más fácil 
+  administrar y editar todos ellos.
+
+
